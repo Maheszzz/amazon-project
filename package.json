@@ -4,6 +4,9 @@
   "description": "This is a clone of Amazon's e-commerce platform built using modern web technologies. The project is a part of my learning journey to improve my skills in frontend development and to replicate the functionalities of a popular e-commerce website.",
   "main": "index.js",
   "scripts": {
+    "build": "next build",
+    "start": "next start",
+    "dev": "next dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,9 +16,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/Maheszzz/amazon-project/issues"
   },
-  "homepage": "https://github.com/Maheszzz/amazon-project#readme"
+  "homepage": "https://github.com/Maheszzz/amazon-project#readme",
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  }
 }
