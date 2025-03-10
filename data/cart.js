@@ -1,24 +1,20 @@
- export const cart=[];
+export const cart = [];
 
-  export function addtocart(productId){
-    let matchingItem;
-  
-    cart.forEach((cartitem) => {
-        if(productId===cartitem.productId){
-            matchingItem=cartitem;
-  
-        }
-        
+export function addtocart(productId) {
+  let matchingItem;
+
+  cart.forEach((cartitem) => {
+    if (productId === cartitem.productId) {
+      matchingItem = cartitem;
+    }
+  });
+
+  if (matchingItem) {
+    matchingItem.quantity += 1;
+  } else {
+    cart.push({
+      productId: productId,
+      quantity: 1
     });
-  
-    if (matchingItem){
-        matchingItem=quantity+=1;
-    }else{
-        cart.push({
-            productId:productId,
-            quantity:1
-    
-        });
-    } 
-  
   }
+}
