@@ -1,81 +1,144 @@
+/* Base layout and variables */
+:root {
+  --primary-color: #067d62;
+  --secondary-color: #f5f5f5;
+  --border-color: #e0e0e0;
+  --text-color: #333;
+  --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+  --transition: all 0.3s ease;
+}
+
 .main {
   max-width: 850px;
-  margin-top: 90px;
-  margin-bottom: 100px;
-  padding-left: 30px;
-  padding-right: 30px;
-
-  /* margin-left: auto;
-     margin-right auto;
-     Is a trick for centering an element horizontally
-     without needing a container. */
-  margin-left: auto;
-  margin-right: auto;
+  margin: 90px auto 100px;
+  padding: 30px;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
 }
 
+/* Navigation */
 .back-to-orders-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   margin-bottom: 30px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
 }
 
+.back-to-orders-link:hover {
+  opacity: 0.8;
+}
+
+.back-to-orders-link::before {
+  content: "←";
+  margin-right: 8px;
+}
+
+/* Order information */
 .delivery-date {
-  font-size: 25px;
+  font-size: 1.6rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  color: var(--text-color);
 }
 
 .product-info {
-  margin-bottom: 3px;
+  margin-bottom: 8px;
+  line-height: 1.5;
 }
 
 .product-image {
   max-width: 150px;
   max-height: 150px;
-  margin-top: 25px;
-  margin-bottom: 50px;
+  margin: 25px 0 50px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.product-image:hover {
+  transform: scale(1.05);
+}
+
+/* Progress tracking */
+.progress-section {
+  margin: 20px 0;
 }
 
 .progress-labels-container {
   display: flex;
   justify-content: space-between;
-  font-size: 20px;
+  font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 15px;
 }
 
 .current-status {
-  color: rgb(6, 125, 98);
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.progress-bar-container {
+  height: 25px;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  overflow: hidden;
+  background-color: var(--secondary-color);
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #06a77d, var(--primary-color));
+  border-radius: 50px;
+  width: 50%;
+  transition: width 1s ease-in-out;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .main {
+    margin: 60px auto 80px;
+    padding: 20px;
+  }
 }
 
 @media (max-width: 575px) {
   .progress-labels-container {
-    font-size: 16px;
+    font-size: 0.9rem;
+  }
+  
+  .delivery-date {
+    font-size: 1.4rem;
   }
 }
 
 @media (max-width: 450px) {
   .progress-labels-container {
     flex-direction: column;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 
   .progress-label {
-    margin-bottom: 3px;
+    margin-bottom: 5px;
+  }
+  
+  .progress-bar-container {
+    height: 20px;
   }
 }
 
-.progress-bar-container {
-  height: 25px;
-  width: 100%;
-
-  border: 1px solid rgb(200, 200, 200);
-  border-radius: 50px;
-  overflow: hidden;
+/* Animation for newly updated status */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
 }
 
-.progress-bar {
-  height: 100%;
-  background-color: green;
-  border-radius: 50px;
-  width: 50%;
+.status-updated {
+  animation: pulse 2s infinite;
 }
